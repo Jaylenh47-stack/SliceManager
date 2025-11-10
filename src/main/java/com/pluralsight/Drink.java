@@ -1,7 +1,23 @@
 package com.pluralsight;
 
-public class Drink {
+public class Drink extends MenuItem {
     private String size;
-    private String flavor;
 
+    public Drink(String description, String size) {
+        super(description);
+        this.size = size;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    @Override
+    public double getPrice() {
+        return 0;
+    }
 }

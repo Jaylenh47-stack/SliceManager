@@ -2,12 +2,13 @@ package com.pluralsight;
 
 import java.util.List;
 
-public class Pizza {
+public class Pizza extends MenuItem{
     private String size;
     private String crustType;
     private List<Topping> toppings;
 
-    public Pizza(String size, String crustType, List<Topping> toppings) {
+    public Pizza( String size, String crustType, List<Topping> toppings) {
+        super("Pizza");
         this.size = size;
         this.crustType = crustType;
         this.toppings = toppings;
@@ -34,5 +35,8 @@ public class Pizza {
     }
 
 
-
+    @Override
+    public double getPrice() {
+        return 0;
+    }
 }

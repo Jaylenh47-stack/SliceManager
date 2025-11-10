@@ -1,20 +1,12 @@
 package com.pluralsight;
 
-public class Topping {
-    private String name;
+public class Topping extends MenuItem {
+
     private boolean isPremium;
 
-    public Topping(String name, boolean isPremium) {
-        this.name = name;
+    public Topping(String description, boolean isPremium) {
+        super(description);
         this.isPremium = !isPremium;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public boolean isPremium() {
@@ -23,5 +15,10 @@ public class Topping {
 
     public void setPremium(boolean premium) {
         isPremium = premium;
+    }
+
+    @Override
+    public double getPrice() {
+        return 0;
     }
 }

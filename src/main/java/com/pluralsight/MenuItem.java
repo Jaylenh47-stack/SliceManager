@@ -1,4 +1,11 @@
 package com.pluralsight;
 
-public interface MenuItem {
+public abstract class MenuItem {
+    private String description;
+
+    public MenuItem(String description) {
+        this.description = description;
+    }
+
+    public abstract double getPrice();
 }
