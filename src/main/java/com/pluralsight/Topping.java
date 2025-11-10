@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 public class Topping extends MenuItem {
-
+    private String category;
     private boolean isPremium;
 
     public Topping(String description, boolean isPremium) {
@@ -15,6 +15,14 @@ public class Topping extends MenuItem {
 
     public void setPremium(boolean premium) {
         isPremium = premium;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override

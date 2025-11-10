@@ -4,7 +4,7 @@ public class GarlicKnot extends MenuItem{
 
 
     public GarlicKnot() {
-        super("Garlic Knot");
+        super("Garlic Knots");
     }
 
     @Override

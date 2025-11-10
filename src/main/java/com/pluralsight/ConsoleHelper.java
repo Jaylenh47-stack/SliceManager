@@ -115,6 +115,10 @@ public class ConsoleHelper {
         return input;
     }
 
+    public static boolean promptForYesNo(){
+        return true;
+    }
+
 
 
 
