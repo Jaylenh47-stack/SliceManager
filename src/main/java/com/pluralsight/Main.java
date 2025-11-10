@@ -8,6 +8,7 @@ public class Main {
 //        pq.addTopping(pep);
 
         UserInterface uI = new UserInterface();
+        uI.display();
 
 
 

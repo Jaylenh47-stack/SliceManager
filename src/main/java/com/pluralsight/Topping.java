@@ -3,6 +3,7 @@ package com.pluralsight;
 public class Topping extends MenuItem {
     private String category;
     private boolean isPremium;
+    private boolean isExtra;
 
     public Topping(String description, boolean isPremium) {
         super(description);
@@ -23,6 +24,14 @@ public class Topping extends MenuItem {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public boolean isExtra() {
+        return isExtra;
+    }
+
+    public void setExtra(boolean extra) {
+        isExtra = extra;
     }
 
     @Override
