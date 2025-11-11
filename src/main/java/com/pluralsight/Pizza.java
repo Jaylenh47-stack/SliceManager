@@ -17,7 +17,7 @@ public class Pizza extends MenuItem{
         this.toppings = new ArrayList<>();
     }
 
-    public String getSize() {
+    public String getSize(){
         return size;
     }
 

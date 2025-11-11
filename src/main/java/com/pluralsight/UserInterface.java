@@ -11,52 +11,81 @@ public class UserInterface {
         init();
     }
 
-    public int homeScreenChoice(){
-        return ConsoleHelper.promptForInt("""
+    public void homeScreen(){
+        System.out.println("""
+                Welcome to the SliceManager
+                ============================
                 1) New Order
                 0) Exit""");
     }
 
 
-
     public void display(){
+
         while (true) {
-            switch (homeScreenChoice()) {
+            homeScreen();
+            int homeScreenChoice = ConsoleHelper.promptForInt("");
+
+            switch (homeScreenChoice) {
                 case 0:
-                    System.exit(0);
+                    return;
                 case 1:
-                    processOrderScreenRequest();
+                    //display order screen
+                    processNewOrderRequest(orderScreenWithInput());
+
+                    //process add Pizza
+                    //process add drink
+                    //process add Garlic knots
+                    //process checkout
+                    //process cancelOrder
+
                     //switch case for orderScreen
 
             }
         }
     }
 
-    public int processOrderScreenRequest(){
+    public int orderScreenWithInput(){
 
-        return ConsoleHelper.promptForInt("""
+        int orderScreenChoice = ConsoleHelper.promptForInt("""
                 1) Add Pizza
                 2) Add Drink
                 3) Add Garlic Knots
                 4) Checkout
                 0) Cancel Order""");
+        return orderScreenChoice;
+    }
+
+    public void processNewOrderRequest(int orderScreenChoice){
+        switch(orderScreenChoice){
+            case 1:
+                //Make a pizza from user input
+                Pizza p = makePizzaWithoutToppings();
+                addToppingsToPizza(p);
+
+        }
     }
 
 
-
-
     public Pizza makePizzaWithoutToppings() {
-        String crustType = ConsoleHelper.promptForString("");
-        String size = ConsoleHelper.promptForString("");
+        //ToDo fix prompts so that the user has to input a number to get their crustType and size
+        String crustType = ConsoleHelper.promptForString("Select your crust");
+        String size = ConsoleHelper.promptForString("8\", 12\", 16\"");
         String stuffedCrust = ConsoleHelper.promptForString("Would you like stuff crusted (Yes/No)");
         boolean isStuffed = (stuffedCrust.toLowerCase().contains("y"));
 
         Pizza pizza = new Pizza(size, crustType, isStuffed);
         return pizza;
     }
-    public int addToppingsToPizza(){
+
+    //Todo Figure out how you want to display the toppings and handle the meat and cheese
+    public int addToppingsToPizza(Pizza pizza){
         while (true){
             //Loop toppings to add until user decides to stop
+            System.out.println("Choose your toppings:");
+            String toppingChoice = String.format("""
+                    """);
+
             //add each topping to the pizza
         }
     }
@@ -64,7 +93,8 @@ public class UserInterface {
     public void processAddPizzaRequest(){
        Pizza pizza = makePizzaWithoutToppings();
        //addToppingsToPizza()
-        order.getMenuItems().add()
+        //add pizz to order
+
 
     }
 
