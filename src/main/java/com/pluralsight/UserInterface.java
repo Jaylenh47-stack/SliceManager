@@ -89,16 +89,16 @@ public class UserInterface {
         return crustType;
     }
 
-    public String convertIntToSizeType(){
+    public String convertIntToPizzaSize(){
         System.out.println("Which size would you like");
         int userInput = ConsoleHelper.promptForInt("1)Personal (8\")    2)Medium (12\")    3)Large (16\")");
-        String sizeType = switch(userInput){
+        String size = switch(userInput){
             case 1 -> "Personal (8\")";
             case 2 -> "Medium (12\")";
             case 3 -> "Large (16\")";
             default -> "Invalid input, please enter a 1, 2, or 3 to choose your size";
         };
-        return sizeType;
+        return size;
     }
 
     public String convertIntToSauce(){
@@ -118,10 +118,10 @@ public class UserInterface {
 
 
     public Pizza makePizzaWithoutToppings() {
-        //ToDo fix prompts so that the user has to input a number to get their crustType and size
+
         //converIntToString methods prompts for the userInput and switches it to the string based on the matching input
         String crustType = convertIntToCrustType();
-        String size = convertIntToSizeType();
+        String size = convertIntToPizzaSize();
         String sauce = convertIntToSauce();
         String stuffedCrust = ConsoleHelper.promptForString("Would you like stuff crusted (Yes/No)");
         boolean isStuffed = (stuffedCrust.toLowerCase().contains("y"));
@@ -189,7 +189,7 @@ public class UserInterface {
 
     public void drinksDisplay(){
         System.out.println(String.format("""
-                    Select your drink, Enter 0 when finished
+                       Select your drink, Enter 0 to skip
                 ===============================================
                 1)Water    2)Sprite    3)Coca-Cola    4)Fanta(Orange)
                 
@@ -200,16 +200,48 @@ public class UserInterface {
 
     }
 
-    public Order processAddDrinkRequest(Order order){
-        Drink d = new Drink("", "");
-        Boolean addingDrinks =true;
+    public String convertIntToDrinkDescrption(){
+        //Method is called after the menu is displayed
+        int userChoice = ConsoleHelper.promptForInt("");
+        String description = switch(userChoice){
+            case 1 -> "Water";
+            case 2 -> "Sprite";
+            case 3 -> "Coca-Cola";
+            case 4 -> "Fanta(Orange)";
+            case 5 -> "Dr Pepper";
+            case 6 -> "Hi-C(Fruit Punch)";
+            case 7 -> "Minute Maid(Lemonade)";
+            default -> "Water";
 
-        while (addingDrinks) {
-            drinksDisplay();
-            //convertIntToDrink
-            //order.addMenuItem(d)
-        }
-        //order.displayOrder();
+        };
+        return description;
+    }
+
+    public String convertIntToDrinkSize(){
+        //Method is called after the drink size is asked for
+        int userChoice = ConsoleHelper.promptForInt("");
+        String size = switch(userChoice){
+            case 1 -> "Small";
+            case 2 -> "Medium";
+            case 3 -> "Large";
+            default -> "Small";
+        };
+        return size;
+    }
+
+    public Order processAddDrinkRequest(Order order){
+        drinksDisplay();
+
+        //Changes the int from userInput to the matching String description
+        String description = convertIntToDrinkDescrption();
+
+        System.out.println("1)Small    2)Medium    3)Large");
+        String size = convertIntToDrinkSize();
+
+        Drink d = new Drink(description, size);
+        order.addMenuItem(d);
+
+        order.displayOrder();
         return order;
 
     }
