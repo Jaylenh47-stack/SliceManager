@@ -21,6 +21,15 @@ public class Topping extends MenuItem {
         this.isExtra = false;
     }
 
+    public String getDescription(){
+        return this.description;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+
     public boolean isPremium() {
         return isPremium;
     }
@@ -67,8 +76,6 @@ public class Topping extends MenuItem {
     public double isExtraPricing(){
         double extraOption= 0;
 
-
-
         if (isExtra){
             if(category.equals("meat")){
                 extraOption = .50;
@@ -87,9 +94,7 @@ public class Topping extends MenuItem {
 
     @Override
     public double getPrice() {
-        //Topping price is determined by if its extra and if its meet or cheese
-        // add isExtraPricing() + isPremuiumPricing
-        //todo figure out how to add pizza to the method
+        //Topping price is determined by if it's extra and if it's premium
 
         return isExtraPricing() + isPremiumPricing();
     }

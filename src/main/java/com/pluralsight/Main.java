@@ -5,16 +5,23 @@ public class Main {
     public static void main(String[] args) {
 
 
-//        UserInterface uI = new UserInterface();
-//        uI.display();
+        UserInterface uI = new UserInterface();
+        uI.display();
 
-        Pizza pizza = new Pizza("Large", "thin",true);
-        Topping topping = new Topping("Pepperoni");
-        Topping topping2 = new Topping("Sausage");
-        pizza.addTopping(topping);
-        pizza.addTopping(topping2);
+//        Order order = new Order();
+//
+//        Pizza pizza = new Pizza("Medium", "thin","sauce", true);
+//        Topping topping = new Topping("Pepperoni");
+//        Topping topping2 = new Topping("Sausage");
+//
+//        pizza.addTopping(topping);
+//        pizza.addTopping(topping2);
+//        order.addMenuItem(pizza);
+//        order.displayOrder();
 
-        System.out.println(pizza.getPrice());
+
+
+//        System.out.println(pizza.getPrice());
 
 
 

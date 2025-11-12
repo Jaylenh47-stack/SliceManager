@@ -6,14 +6,16 @@ import java.util.List;
 public class Pizza extends MenuItem{
     private String size;
     private String crustType;
+    private String sauce;
     private boolean isStuffed;
     private List<Topping> toppings;
 
-    public Pizza( String size, String crustType, boolean isStuffed) {
-        super("Pizza");
+    public Pizza( String size, String crustType, String sauce, boolean isStuffed) {
+        super(String.format("%s pizza",size));
         this.size = size;
         this.crustType = crustType;
         this.isStuffed = !isStuffed;
+        this.sauce = sauce;
         this.toppings = new ArrayList<>();
     }
 
@@ -63,13 +65,17 @@ public class Pizza extends MenuItem{
         }
     }
 
+    public String getSauce() {
+        return sauce;
+    }
+
     public double isStuffedPricing(){
        //make this change based on size
         return 1.00;
     }
 
     public double toppingsPricing(){
-        //todo test if this works
+
         int sizeInflation = 0;
 
         //multiplier for the extra toppings option based on size
@@ -87,8 +93,6 @@ public class Pizza extends MenuItem{
       double toppingsTotal = toppingsPrice.stream().reduce((double) 0, (temp, num) -> temp +=num);
 
       return toppingsTotal * sizeInflation;
-
-
     }
 
 
@@ -100,10 +104,6 @@ public class Pizza extends MenuItem{
 
     @Override
     public String toString() {
-        return "Pizza{" +
-                "isStuffed=" + isStuffed +
-                ", crustType='" + crustType + '\'' +
-                ", size='" + size + '\'' +
-                '}';
+        return String.format("%s", description);
     }
 }

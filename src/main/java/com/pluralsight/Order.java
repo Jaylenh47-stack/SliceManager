@@ -29,6 +29,15 @@ public class Order {
     }
 
     public void addMenuItem(MenuItem menuItem){
-
+        this.menuItems.add(menuItem);
     }
+
+    public void displayOrder() {
+        for (MenuItem m : menuItems) {
+            System.out.println(m);
+        }
+    }
+
+
+
 }
