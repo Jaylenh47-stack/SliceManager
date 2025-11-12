@@ -3,23 +3,22 @@ package com.pluralsight;
 public class UserInterface {
 
 
-    public UserInterface() {
+    public void display(){
+
+       displayHomeScreen();
+
     }
 
-    public void homeScreen(){
-        System.out.println("""
+    public void displayHomeScreen(){
+        while (true) {
+
+            System.out.println("""
                 
                 Welcome to the SliceManager
                 ============================
                 1) New Order
                 0) Exit""");
-    }
 
-
-    public void display(){
-
-        while (true) {
-            homeScreen();
             int homeScreenChoice = ConsoleHelper.promptForInt("");
 
             switch (homeScreenChoice) {
@@ -27,48 +26,49 @@ public class UserInterface {
                     return;
                 case 1:
                     //display order screen
-                    Order order = new Order();
-                    while (true) {
-
-                        processNewOrderRequest(orderScreenWithInput(),order);
-                    }
+                   displayOrderScreen();
+                   break;
             }
         }
     }
 
-    public int orderScreenWithInput(){
+    public void displayOrderScreen(){
+        Order order = new Order();
 
-        int orderScreenChoice = ConsoleHelper.promptForInt("""
+        while (true) {
+
+            int orderScreenChoice = ConsoleHelper.promptForInt("""
                 1) Add Pizza
                 2) Add Drink
                 3) Add Garlic Knots
                 4) Checkout
                 0) Cancel Order""");
-        return orderScreenChoice;
-    }
 
-    public void processNewOrderRequest(int orderScreenInput, Order order){
 
-        switch(orderScreenInput){
-            case 1:
-                //Make a pizza from user input and add it to the order
-                processAddPizzaRequest(order);
+            switch(orderScreenChoice){
+                case 1:
+                    //Make a pizza from user input and add it to the order
+                    processAddPizzaRequest(order);
 //
-                break;
-            case 2:
-                processAddDrinkRequest(order);
-                break;
-            case 3:
-                //processAddGarlicKnotsRequest(order);
-                break;
-            case 4:
-                //order.checkout();
-            case 0:
-                //order.cancel()
+                    break;
+                case 2:
+                    processAddDrinkRequest(order);
+                    break;
+                case 3:
+                    //processAddGarlicKnotsRequest(order);
+                    break;
+                case 4:
+                    //order.checkout();
+                case 0:
+                    return;
 
 
+
+            }
         }
     }
+
+
 
     public String convertIntToCrustType(){
         System.out.println("Select your crust");
