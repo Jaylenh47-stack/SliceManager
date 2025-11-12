@@ -72,7 +72,7 @@ public class UserInterface {
     public Pizza makePizzaWithoutToppings() {
         //ToDo fix prompts so that the user has to input a number to get their crustType and size
         String crustType = ConsoleHelper.promptForString("Select your crust");
-        String size = ConsoleHelper.promptForString("8\", 12\", 16\"");
+        String size = ConsoleHelper.promptForString("Personal (8\"), Medium(12\"), Large (16\")");
         String stuffedCrust = ConsoleHelper.promptForString("Would you like stuff crusted (Yes/No)");
         boolean isStuffed = (stuffedCrust.toLowerCase().contains("y"));
 
@@ -89,9 +89,21 @@ public class UserInterface {
                     Meats ($1:00)   1) pepporoni    2)sausase   3)ham   4)bacon 5)
                     Cheese (0.75)
                     """);
+
+//            switch  (toppingChoice){
+//
+//            }
+
+            //Topping topping = new Topping()
+            //topping.setCategory()
+            //topping.setPremium()
+
+
+
+
             String description = "";
            // boolean
-           // Topping topping = new Topping()
+           //
 
             //add each topping to the pizza
         }

@@ -5,23 +5,23 @@ public class Topping extends MenuItem {
     private boolean isPremium;
     private boolean isExtra;
 
-    public Topping(String description, boolean isPremium, boolean isExtra) {
+    public Topping(String description) {
         super(description);
-        this.isPremium = isPremium;
-        this.isExtra = isExtra;
+        this.isPremium = true;
+        this.isExtra = true;
     }
 
     public boolean isPremium() {
-        if (category.equals("meat") || category.equals("cheese")){
-            return isPremium;
-        }
-        else{
-            return !isPremium;
-        }
+        return isPremium;
     }
 
     public void setPremium(boolean premium) {
-        isPremium = premium;
+        if (category.equals("meat") || category.equals("cheese")){
+             isPremium = premium;
+        }
+        else{
+            isPremium = !premium;
+        }
     }
 
     public String getCategory() {
@@ -29,7 +29,12 @@ public class Topping extends MenuItem {
     }
 
     public void setCategory(String category) {
-        this.category = category;
+        switch(this.description){
+            case "Pepperoni", "Sausage", "Ham", "Bacon", "Chicken", "Meatball":
+                this.category = "meat";
+            case "Mozzarella", "Permasan", "Ricotta", "Goat Cheese", "Buffalo":
+                this.category = "cheese";
+        }
     }
 
     public boolean isExtra() {
@@ -38,45 +43,38 @@ public class Topping extends MenuItem {
 
 
     public void setExtra(boolean extra) {
+
+
+
         isExtra = extra;
     }
 
     public double isPremiumPricing(){
+       //If it's not a premium topping it is free
         double premiumPrice = 0;
-        if (this.category.equals("meat")){
-            premiumPrice = 1;
-        }
-        else if (this.category.equals("cheese")){
-            premiumPrice = 0.75;
-        }
 
-
+        if (isPremium) {
+            if (this.category.equals("meat")) {
+                premiumPrice = 1;
+            } else if (this.category.equals("cheese")) {
+                premiumPrice = 0.75;
+            }
+        }
 
         return premiumPrice;
     }
 
-    public double isExtraPricing(Pizza pizza){
+    public double isExtraPricing(){
         double extraOption= 0;
-        int sizeInflation = 0;
 
-        //multiplier for the extra toppings option based on size
-        if (pizza.getSize().equals("small")){
-            sizeInflation = 1;
-        }
-        else if(pizza.getSize().equals("medium")){
-            sizeInflation = 2;
-        }
-        else{
-            sizeInflation = 3;
-        }
 
 
         if (isExtra){
             if(category.equals("meat")){
-                extraOption = .50 * sizeInflation;
+                extraOption = .50;
 
             } else if (category.equals("cheese")) {
-                extraOption = .30 *sizeInflation;
+                extraOption = .30;
             }
 
             else{
