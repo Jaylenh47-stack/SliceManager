@@ -55,11 +55,7 @@ public class UserInterface {
             case 1:
                 //Make a pizza from user input and add it to the order
                 processAddPizzaRequest(order);
-
-//                Pizza p = makePizzaWithoutToppings();
-//                addToppingsToPizza(p);
-//                order.addMenuItem(p);
-//                order.displayOrder();
+//
                 break;
             case 2:
                 processAddDrinkRequest(order);
@@ -194,8 +190,6 @@ public class UserInterface {
                 1)Water    2)Sprite    3)Coca-Cola    4)Fanta(Orange)
                 
                 5)Dr Pepper    6)Hi-C(Fruit Punch)    7)Minute Maid(Lemonade)
-                
-               
                 """));
 
     }

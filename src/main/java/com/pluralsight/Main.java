@@ -12,7 +12,7 @@ public class Main {
 
 //        Order order = new Order();
 //
-//        Pizza pizza = new Pizza("Medium", "Thin","sauce", true);
+//        Pizza pizza = new Pizza("Large", "Thin","sauce", true);
 //        Topping topping = new Topping("Pepperoni");
 //        Topping topping2 = new Topping("Sausage");
 //

@@ -60,11 +60,11 @@ public class Pizza extends MenuItem{
 
     public double basePricing(){
         switch (this.size){
-            case "Personal":
+            case "Personal (8\")":
                 return 8.50;
-            case "Medium":
+            case "Medium (12\")":
                 return 12.00;
-            case "Large":
+            case "Large (16\")":
                 return 16.00;
             default:
                 return 8.50;

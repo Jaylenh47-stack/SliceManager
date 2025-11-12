@@ -18,6 +18,26 @@ public class Drink extends MenuItem {
 
     @Override
     public double getPrice() {
-        return 0;
+        if (this.description.equals("Water")) {
+            return 0;
+        } else {
+            if (this.size.equals("Small")){
+                return 2.00;
+            }
+            else if (this.size.equals("Medium")) {
+                return 2.50;
+            }
+            else{
+                return 3.00;
+            }
+
+
+        }
+    }
+
+    @Override
+    public String toString() {
+        return this.size + " "+ this.description;
     }
 }
+
