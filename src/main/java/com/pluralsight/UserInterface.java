@@ -1,14 +1,9 @@
 package com.pluralsight;
 
 public class UserInterface {
-    private Order order;
 
-    private void init(){
-        Order order = new Order();
-    }
 
     public UserInterface() {
-        init();
     }
 
     public void homeScreen(){
@@ -95,9 +90,9 @@ public class UserInterface {
 //            }
 
             //Topping topping = new Topping()
-            //topping.setCategory()
-            //topping.setPremium()
 
+            //topping.setPremium()
+            //
 
 
 

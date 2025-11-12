@@ -52,11 +52,11 @@ public class Pizza extends MenuItem{
 
     public double basePricing(){
         switch (this.size){
-            case "8\"":
+            case "Personal":
                 return 8.50;
-            case "12\"":
+            case "Medium":
                 return 12.00;
-            case "16\"":
+            case "Large":
                 return 16.00;
             default:
                 return 8.50;
@@ -64,28 +64,29 @@ public class Pizza extends MenuItem{
     }
 
     public double isStuffedPricing(){
-        return 0;
+       //make this change based on size
+        return 1.00;
     }
 
     public double toppingsPricing(){
         //todo test if this works
-//        int sizeInflation = 0;
-//
-//        //multiplier for the extra toppings option based on size
-//        if (this.getSize().equals("small")){
-//            sizeInflation = 1;
-//        }
-//        else if(this.getSize().equals("medium")){
-//            sizeInflation = 2;
-//        }
-//        else{
-//            sizeInflation = 3;
-//        }
+        int sizeInflation = 0;
+
+        //multiplier for the extra toppings option based on size
+        if (this.getSize().equals("Personal")){
+            sizeInflation = 1;
+        }
+        else if(this.getSize().equals("Medium")){
+            sizeInflation = 2;
+        }
+        else{
+            sizeInflation = 3;
+        }
 
       List<Double> toppingsPrice = this.toppings.stream().map(t -> t.getPrice()).toList();
       double toppingsTotal = toppingsPrice.stream().reduce((double) 0, (temp, num) -> temp +=num);
 
-      return toppingsTotal;
+      return toppingsTotal * sizeInflation;
 
 
     }

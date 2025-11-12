@@ -7,8 +7,18 @@ public class Topping extends MenuItem {
 
     public Topping(String description) {
         super(description);
-        this.isPremium = true;
-        this.isExtra = true;
+        this.category = switch(this.description){
+            case "Pepperoni", "Sausage", "Ham", "Bacon", "Chicken", "Meatball" -> "meat";
+            case "Mozzarella", "Parmesan", "Ricotta", "Goat Cheese", "Buffalo" -> "cheese";
+            default -> "regular";
+        };
+
+        this.isPremium = switch(category){
+            case "meat", "cheese" -> true;
+            default -> false;
+        };
+
+        this.isExtra = false;
     }
 
     public boolean isPremium() {
@@ -16,12 +26,7 @@ public class Topping extends MenuItem {
     }
 
     public void setPremium(boolean premium) {
-        if (category.equals("meat") || category.equals("cheese")){
-             isPremium = premium;
-        }
-        else{
-            isPremium = !premium;
-        }
+        isPremium = premium;
     }
 
     public String getCategory() {
@@ -29,12 +34,7 @@ public class Topping extends MenuItem {
     }
 
     public void setCategory(String category) {
-        switch(this.description){
-            case "Pepperoni", "Sausage", "Ham", "Bacon", "Chicken", "Meatball":
-                this.category = "meat";
-            case "Mozzarella", "Permasan", "Ricotta", "Goat Cheese", "Buffalo":
-                this.category = "cheese";
-        }
+      this.category = category;
     }
 
     public boolean isExtra() {
