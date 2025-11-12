@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 public class Main {
-    //The way i'm handling the toppings prompt
+
     //Constructor for topping class
     //Pricing for isExtra
     public static void main(String[] args) {

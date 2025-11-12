@@ -27,13 +27,11 @@ public class UserInterface {
                     return;
                 case 1:
                     //display order screen
+                    Order order = new Order();
                     while (true) {
-                        processNewOrderRequest(orderScreenWithInput());
+
+                        processNewOrderRequest(orderScreenWithInput(),order);
                     }
-
-
-
-
             }
         }
     }
@@ -49,9 +47,9 @@ public class UserInterface {
         return orderScreenChoice;
     }
 
-    public void processNewOrderRequest(int orderScreenChoice){
-       Order order = new Order();
-        switch(orderScreenChoice){
+    public void processNewOrderRequest(int orderScreenInput, Order order){
+
+        switch(orderScreenInput){
             case 1:
                 //Make a pizza from user input and add it to the order
                 processAddPizzaRequest(order);
