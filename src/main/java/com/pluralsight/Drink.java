@@ -37,7 +37,7 @@ public class Drink extends MenuItem {
 
     @Override
     public String toString() {
-        return this.size + " "+ this.description;
+        return String.format("%s %s| $%.2f", this.size,this.description, this.getPrice());
     }
 }
 

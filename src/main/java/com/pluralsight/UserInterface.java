@@ -49,16 +49,19 @@ public class UserInterface {
                 case 1:
                     //Make a pizza from user input and add it to the order
                     processAddPizzaRequest(order);
-//
                     break;
                 case 2:
                     processAddDrinkRequest(order);
                     break;
                 case 3:
-                    //processAddGarlicKnotsRequest(order);
+                    processAddGarlicKnotsRequest(order);
                     break;
                 case 4:
-                    //order.checkout();
+                    System.out.println("Confirm your order");
+                    System.out.println("=====================");
+                    order.display();
+                   String confirmOrder = ConsoleHelper.promptForString("Checkout? (Yes/No)");
+
                 case 0:
                     return;
 
@@ -176,7 +179,7 @@ public class UserInterface {
         Pizza p = makePizzaWithoutToppings();
         addToppingsToPizza(p);
         order.addMenuItem(p);
-        order.displayOrder();
+        order.display();
 
         return order;
     }
@@ -233,9 +236,25 @@ public class UserInterface {
         Drink d = new Drink(description, size);
         order.addMenuItem(d);
 
-        order.displayOrder();
+        order.display();
         return order;
 
+    }
+
+    public Order processAddGarlicKnotsRequest(Order order){
+        System.out.println("=====================");
+        System.out.println("How many garlic knots would you like?");
+        System.out.println("Sold in packs of 3 for $1.50");
+
+        int garlicKnotsQuantity = ConsoleHelper.promptForInt("");
+
+        for (int i = 0; i <garlicKnotsQuantity; i++) {
+            GarlicKnots garlicKnots = new GarlicKnots();
+            order.addMenuItem(garlicKnots);
+        }
+
+        order.display();
+        return order;
     }
 
 

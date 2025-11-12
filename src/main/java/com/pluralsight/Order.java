@@ -1,6 +1,5 @@
 package com.pluralsight;
 
-import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +9,7 @@ public class Order {
     private LocalDateTime localDateTime;
 
 
-    public Order(List<MenuItem> menuItems, LocalDateTime localDateTime) {
-        this.menuItems = new ArrayList<>();
-        this.localDateTime = localDateTime;
-    }
+
 
     public Order() {
         this.menuItems = new ArrayList<>();
@@ -32,11 +28,29 @@ public class Order {
         this.menuItems.add(menuItem);
     }
 
-    public void displayOrder() {
+    public void display() {
         System.out.println("Current order:");
+
+        List<GarlicKnots> allGarlicKnots = new ArrayList<>();
         for (MenuItem m : menuItems) {
             System.out.println(m);
         }
+
+
+
+
+        if (menuItems.size() > 1) {
+            System.out.printf("Current total: %.2f%n", getOrderTotal());
+        }
+
+    }
+
+    public double getOrderTotal(){
+        double orderTotal = 0;
+        for (MenuItem m : menuItems){
+            orderTotal +=m.getPrice();
+        }
+        return orderTotal;
     }
 
 

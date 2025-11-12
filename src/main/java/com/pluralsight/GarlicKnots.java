@@ -4,7 +4,7 @@ public class GarlicKnots extends MenuItem{
 
 
     public GarlicKnots() {
-        super("Garlic Knots");
+        super("3 Garlic Knots");
     }
 
     @Override
@@ -12,5 +12,8 @@ public class GarlicKnots extends MenuItem{
         return 1.50;
     }
 
-
+    @Override
+    public String toString() {
+        return this.description;
+    }
 }
