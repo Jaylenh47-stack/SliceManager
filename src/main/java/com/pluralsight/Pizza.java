@@ -59,8 +59,9 @@ public class Pizza extends MenuItem{
     }
 
     public double toppingsPricing(){
-       //this.toppings
-        return 0;
+      List<Double> toppingsPrice = this.toppings.stream().map(t -> t.getPrice()).toList();
+      double toppingsTotal = toppingsPrice.stream().reduce((double) 0, (temp, num) -> temp +=num);
+        return toppingsTotal;
     }
 
 
