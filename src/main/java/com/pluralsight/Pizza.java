@@ -49,8 +49,33 @@ public class Pizza extends MenuItem{
           this.toppings.add(topping);
     }
 
+
+    public double sizePricing(){
+        return 0;
+    }
+
+    public double isStuffedPricing(){
+        return 0;
+    }
+
+    public double toppingsPricing(){
+       //this.toppings
+        return 0;
+    }
+
+
+
     @Override
     public double getPrice() {
-        return 0;
+        return sizePricing() + isStuffedPricing() + toppingsPricing();
+    }
+
+    @Override
+    public String toString() {
+        return "Pizza{" +
+                "isStuffed=" + isStuffed +
+                ", crustType='" + crustType + '\'' +
+                ", size='" + size + '\'' +
+                '}';
     }
 }

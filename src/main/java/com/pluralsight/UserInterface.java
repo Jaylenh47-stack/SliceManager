@@ -57,11 +57,13 @@ public class UserInterface {
     }
 
     public void processNewOrderRequest(int orderScreenChoice){
+       Order order = new Order();
         switch(orderScreenChoice){
             case 1:
                 //Make a pizza from user input
                 Pizza p = makePizzaWithoutToppings();
                 addToppingsToPizza(p);
+                order.addMenuItem(p);
 
         }
     }
@@ -83,8 +85,13 @@ public class UserInterface {
         while (true){
             //Loop toppings to add until user decides to stop
             System.out.println("Choose your toppings:");
-            String toppingChoice = String.format("""
+            int toppingChoice = ConsoleHelper.promptForInt("""
+                    Meats ($1:00)   1) pepporoni    2)sausase   3)ham   4)bacon 5)
+                    Cheese (0.75)
                     """);
+            String description = "";
+           // boolean
+           // Topping topping = new Topping()
 
             //add each topping to the pizza
         }

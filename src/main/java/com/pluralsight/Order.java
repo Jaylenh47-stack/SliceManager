@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,5 +26,9 @@ public class Order {
 
     public LocalDateTime getLocalDateTime() {
         return localDateTime;
+    }
+
+    public void addMenuItem(MenuItem menuItem){
+
     }
 }

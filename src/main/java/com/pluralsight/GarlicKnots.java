@@ -1,15 +1,15 @@
 package com.pluralsight;
 
-public class GarlicKnot extends MenuItem{
+public class GarlicKnots extends MenuItem{
 
 
-    public GarlicKnot() {
+    public GarlicKnots() {
         super("Garlic Knots");
     }
 
     @Override
     public double getPrice() {
-        return 0;
+        return 1.50;
     }
 
 
