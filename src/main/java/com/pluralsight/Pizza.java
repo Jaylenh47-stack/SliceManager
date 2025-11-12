@@ -11,9 +11,9 @@ public class Pizza extends MenuItem{
     private List<Topping> toppings;
 
     public Pizza( String size, String crustType, String sauce, boolean isStuffed) {
-        super(String.format("%s pizza",size));
+        super(String.format("%s Pizza",size));
         this.size = size;
-        this.crustType = crustType;
+        this.crustType = crustType + " crust";
         this.isStuffed = !isStuffed;
         this.sauce = sauce;
         this.toppings = new ArrayList<>();
@@ -49,6 +49,12 @@ public class Pizza extends MenuItem{
 
     public void addTopping(Topping topping){
           this.toppings.add(topping);
+    }
+
+    public void removeTopping(Topping topping){
+        this.toppings.remove(topping);
+        //use this in userinterface
+
     }
 
 
@@ -102,8 +108,9 @@ public class Pizza extends MenuItem{
         return basePricing() + isStuffedPricing() + toppingsPricing();
     }
 
+    //todo fix toString so that it prints the pizza and the toppings it has
     @Override
     public String toString() {
-        return String.format("%s", description);
+        return String.format("%s %s| %.2f",crustType, description, getPrice());
     }
 }

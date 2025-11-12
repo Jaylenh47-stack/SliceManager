@@ -33,6 +33,7 @@ public class Order {
     }
 
     public void displayOrder() {
+        System.out.println("Current order:");
         for (MenuItem m : menuItems) {
             System.out.println(m);
         }
