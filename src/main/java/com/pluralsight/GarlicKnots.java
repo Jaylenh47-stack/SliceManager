@@ -14,6 +14,6 @@ public class GarlicKnots extends MenuItem{
 
     @Override
     public String toString() {
-        return this.description;
+        return String.format("%s | %.2f",this.description , this.getPrice());
     }
 }

@@ -98,8 +98,9 @@ public class UserInterface {
             case 2 -> "Regular";
             case 3 -> "Thick";
             case 4 -> "Cauliflower";
-            default -> "Invalid input, please enter a 1, 2, 3, or 4 to choose your crust";
+            default -> "Regular";
         };
+
         return crustType;
     }
 
@@ -186,39 +187,45 @@ public class UserInterface {
                     ──────────────────────────────────────────────────────────────────────────────────────────
                     """);
             int toppingChoice = ConsoleHelper.promptForInt("Enter 0 when finished");
-            Topping t = new Topping("");
-            switch (toppingChoice) {
-                case 1 -> t.setDescription("Pepperoni");
-                case 2 -> t.setDescription("Sausage");
-                case 3 -> t.setDescription("Ham");
-                case 4 -> t.setDescription("Bacon");
-                case 5 -> t.setDescription("Chicken");
-                case 6 -> t.setDescription("Meatball");
-                case 7 -> t.setDescription("Mozzarella");
-                case 8 -> t.setDescription("Parmesan");
-                case 9 -> t.setDescription("Ricotta");
-                case 10 -> t.setDescription("Goat Cheese");
-                case 11 -> t.setDescription("Buffalo");
-                case 12 -> t.setDescription("Onions");
-                case 13 -> t.setDescription("Mushrooms");
-                case 14 -> t.setDescription("Bell Peppers");
-                case 15 -> t.setDescription("Olives");
-                case 16 -> t.setDescription("Tomatoes");
-                case 17 -> t.setDescription("Spinach");
-                case 18 -> t.setDescription("Basil");
-                case 19 -> t.setDescription("Pineapple");
-                case 20 -> t.setDescription("Anchovies");
-                case 0 -> addingToppings = false;
-            }
+
+            String toppingDescription = switch (toppingChoice) {
+                case 1 -> "Pepperoni";
+                case 2 -> "Sausage";
+                case 3 -> "Ham";
+                case 4 -> "Bacon";
+                case 5 -> "Chicken";
+                case 6 -> "Meatball";
+                case 7 -> "Mozzarella";
+                case 8 -> "Parmesan";
+                case 9 -> "Ricotta";
+                case 10 -> "Goat Cheese";
+                case 11 -> "Buffalo";
+                case 12 -> "Onions";
+                case 13 -> "Mushrooms";
+                case 14 -> "Bell Peppers";
+                case 15 -> "Olives";
+                case 16 -> "Tomatoes";
+                case 17 -> "Spinach";
+                case 18 -> "Basil";
+                case 19 -> "Pineapple";
+                case 20 -> "Anchovies";
+                case 0 -> null;  // Signal to exit
+                default -> null;
+            };
 
             System.out.println();
+            if (toppingDescription ==null) {
+                addingToppings = false;
+            }
+
             if (addingToppings) {
+                Topping t = new Topping(toppingDescription);
                 t.setExtra(ConsoleHelper.promptForYesNo(String.format("Extra %s?", t.description)));
+                pizza.addTopping(t);
                 System.out.println();
             }
-            pizza.addTopping(t);
 
-            //todo currently printing same topping repeatedly instead of each one individually?
+
             System.out.println("Current toppings:");
             pizza.getToppings().forEach(System.out::println);
 
@@ -256,7 +263,7 @@ public class UserInterface {
 
     public String convertIntToDrinkDescrption(){
         //Method is called after the menu is displayed
-        int userChoice = ConsoleHelper.promptForInt("");
+        int userChoice = ConsoleHelper.promptForInt("Enter your command");
         String description = switch(userChoice){
             case 1 -> "Water";
             case 2 -> "Sprite";
@@ -273,7 +280,7 @@ public class UserInterface {
 
     public String convertIntToDrinkSize(){
         //Method is called after the drink size is asked for
-        int userChoice = ConsoleHelper.promptForInt("");
+        int userChoice = ConsoleHelper.promptForInt("Enter your command");
         String size = switch(userChoice){
             case 1 -> "Small";
             case 2 -> "Medium";
@@ -289,7 +296,10 @@ public class UserInterface {
         //Changes the int from userInput to the matching String description
         String description = convertIntToDrinkDescrption();
 
-        System.out.println("1)Small    2)Medium    3)Large");
+        System.out.println("""
+                1)Small    
+                2)Medium    
+                3)Large""");
         String size = convertIntToDrinkSize();
 
         Drink d = new Drink(description, size);

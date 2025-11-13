@@ -35,15 +35,15 @@ public class Order {
     public String getReceiptText(){
         StringBuilder receipt = new StringBuilder();
 
-        receipt.append("Pizzeria" +"\n");
-        receipt.append("──────────────────────────────────────" + "\n");
+        receipt.append("                            Pizzeria" +"\n");
+        receipt.append("────────────────────────────────────────────────────────────────────────" + "\n");
         receipt.append("Date: " + this.localDateTime + "\n");
-        receipt.append("──────────────────────────────────────" + "\n");
+        receipt.append("────────────────────────────────────────────────────────────────────────" + "\n");
         for (MenuItem m: menuItems){
             receipt.append(m.toString()).append("\n");
         }
-        receipt.append("──────────────────────────────────────" + "\n");
-        receipt.append(String.format("Total: %30.2f", getOrderTotal()));
+        receipt.append("────────────────────────────────────────────────────────────────────────" + "\n");
+        receipt.append(String.format("Total: %65.2f", getOrderTotal()));
         return receipt.toString();
 
 

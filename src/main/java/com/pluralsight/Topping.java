@@ -52,9 +52,6 @@ public class Topping extends MenuItem {
 
 
     public void setExtra(boolean extra) {
-
-
-
         isExtra = extra;
     }
 

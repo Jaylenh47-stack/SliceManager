@@ -5,24 +5,27 @@ public class Main {
     //addToppingsToPizza broke
     public static void main(String[] args) {
 
+        UserInterface uI = new UserInterface();
+        uI.display();
 
-//        UserInterface uI = new UserInterface();
-//        uI.display();
 
-        Order order = new Order();
 
-        Pizza pizza = new Pizza("Large", "Thin","sauce", true);
-        Topping topping = new Topping("Pepperoni");
-        Topping topping2 = new Topping("Sausage");
-        Drink drink = new Drink("Sprite", "Large");
-
-        pizza.addTopping(topping);
-        pizza.addTopping(topping2);
-        order.addMenuItem(pizza);
-        order.addMenuItem(drink);
-        //Todo make display order look nice
-       // order.display();
-        System.out.println(pizza);
+//        Order order = new Order();
+//
+//        Pizza pizza = new Pizza("Large (16\")", "Thin","Marinara", true);
+//        Topping topping = new Topping("Pepperoni");
+//        //Topping topping2 = new Topping("Sausage");
+//        Drink drink = new Drink("Sprite", "Large");
+//
+//        topping.setExtra(true);
+//        //topping2.setExtra(true);
+//        pizza.addTopping(topping);
+//        //pizza.addTopping(topping2);
+//        order.addMenuItem(pizza);
+//        order.addMenuItem(drink);
+//    //    Todo make display order look nice
+//       // order.display();
+//        System.out.println(pizza);
 
 //        System.out.println(order.getReceiptText());
 

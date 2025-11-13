@@ -61,7 +61,7 @@ public class Pizza extends MenuItem{
             case "Medium (12\")":
                 return 12.00;
             case "Large (16\")":
-                return 16.00;
+                return 16.50;
             default:
                 return 8.50;
         }
@@ -81,10 +81,10 @@ public class Pizza extends MenuItem{
         int sizeInflation = 0;
 
         //multiplier for the extra toppings option based on size
-        if (this.getSize().equals("Personal")){
+        if (this.getSize().equals("Personal (8\")")){
             sizeInflation = 1;
         }
-        else if(this.getSize().equals("Medium")){
+        else if(this.getSize().equals("Medium (12\")")){
             sizeInflation = 2;
         }
         else{
@@ -122,10 +122,14 @@ public class Pizza extends MenuItem{
         else{
         StringBuilder sB = new StringBuilder();
             sB.append(String.format("%s %s %s with ",stuffed,crustType, description));
-            for(Topping t : toppings){
-                sB.append(t + ", " );
+            for(int i = 0; i < toppings.size(); i++){
+                Topping t = toppings.get(i);
+
+                //if it's the last topping in the list, don't print a comma
+
+                sB.append(t + "| " );
             }
-            sB.append(String.format("| %.2f", this.getPrice()));
+            sB.append(String.format("%.2f", this.getPrice()));
             return sB.toString();
         }
     }
