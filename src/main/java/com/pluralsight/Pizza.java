@@ -14,7 +14,7 @@ public class Pizza extends MenuItem{
         super(String.format("%s Pizza",size));
         this.size = size;
         this.crustType = crustType + " crust";
-        this.isStuffed = !isStuffed;
+        this.isStuffed = isStuffed;
         this.sauce = sauce;
         this.toppings = new ArrayList<>();
     }
@@ -72,8 +72,8 @@ public class Pizza extends MenuItem{
     }
 
     public double isStuffedPricing(){
-       //make this change based on size
-        return 1.00;
+      return (isStuffed)? 1.00 : 0;
+
     }
 
     public double toppingsPricing(){
@@ -104,14 +104,7 @@ public class Pizza extends MenuItem{
         return basePricing() + isStuffedPricing() + toppingsPricing();
     }
 
-    public String toStringHelper(){
-        if (this.toppings.isEmpty()){
-            return "";
-        }
-        else{
-        return "";
-        }
-    }
+
 
     //todo fix toString so that it prints the pizza and the toppings it has
     @Override
@@ -132,7 +125,7 @@ public class Pizza extends MenuItem{
             for(Topping t : toppings){
                 sB.append(t + ", " );
             }
-            sB.append("| " + this.getPrice());
+            sB.append(String.format("| %.2f", this.getPrice()));
             return sB.toString();
         }
     }

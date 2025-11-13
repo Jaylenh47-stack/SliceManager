@@ -73,6 +73,7 @@ public class UserInterface {
 
 
                 case 0:
+                    System.out.println("Order canceled... returning to home menu");
                     return;
             }
         }
@@ -157,7 +158,7 @@ public class UserInterface {
         String sauce = convertIntToSauce();
         System.out.println();
         boolean isStuffed = ConsoleHelper.promptForYesNo("Would you like stuff crusted");
-        //boolean isStuffed = (stuffedCrust.toLowerCase().contains("y"));
+
 
         Pizza pizza = new Pizza(size, crustType, sauce, isStuffed);
         return pizza;
@@ -173,18 +174,18 @@ public class UserInterface {
             //Todo make toppings screen into a new method and update the price of meat and cheese based on the pizza.getSize()
             System.out.println("""
                     
-                    Choose your toppings, Enter 0 when finished);
-                    
+                    Choose your toppings);
+                    ──────────────────────────────────────────────────────────────────────────────────────────
                     Meats ($1:00)   1) Pepporoni    2)Sausase     3)Ham   4)Bacon    5)Chicken    6)Meatball
-                    ────────────────────────────────────────────────────────────────────────────────────────
-                    Cheese (0.75)   7) Mozzarella   8)Parmesan    9)Ricotta    10)Goat Cheese   11)Buffalo
-                    ────────────────────────────────────────────────────────────────────────────────────────
+                    ──────────────────────────────────────────────────────────────────────────────────────────
+                    Cheese (0.75)   7) Mozzarella   8)Parmesan    9)Ricotta    10)Goat Cheese     11)Buffalo
+                    ──────────────────────────────────────────────────────────────────────────────────────────
                                     12)Onions       13)Mushrooms  14)bell peppers    15)olives    16)tomatoes
                     Regular (FREE)
-                                    17)Spinach          18)Basil          19)Pineapple          20)Anchovies
-                    ────────────────────────────────────────────────────────────────────────────────────────
+                                    17)Spinach          18)Basil          19)Pineapple            20)Anchovies
+                    ──────────────────────────────────────────────────────────────────────────────────────────
                     """);
-            int toppingChoice = ConsoleHelper.promptForInt("Enter your command");
+            int toppingChoice = ConsoleHelper.promptForInt("Enter 0 when finished");
             Topping t = new Topping("");
             switch (toppingChoice) {
                 case 1 -> t.setDescription("Pepperoni");
@@ -333,7 +334,10 @@ public class UserInterface {
         String confirmOrder = ConsoleHelper.promptForString("Checkout? (Yes/No)");
 
         if (confirmOrder.toLowerCase().contains("y")){
-            //write receipt to file
+            System.out.println("Checkout complete");
+            System.out.println("Thank you for your purchase");
+            ReceiptManager.saveReceipt(order);
+
         }
         else{
             return false;
