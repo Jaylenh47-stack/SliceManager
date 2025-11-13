@@ -32,7 +32,7 @@ public class Order {
         return localDateTime;
     }
 
-    public StringBuilder getReceiptText(){
+    public String getReceiptText(){
         StringBuilder receipt = new StringBuilder();
 
         receipt.append("Pizzeria" +"\n");
@@ -44,7 +44,7 @@ public class Order {
         }
         receipt.append("──────────────────────────────────────" + "\n");
         receipt.append(String.format("Total: %30.2f", getOrderTotal()));
-        return receipt;
+        return receipt.toString();
 
 
     }

@@ -100,12 +100,12 @@ public class Topping extends MenuItem {
     }
 
     public String toStringHelper(){
-       return (this.isExtra)? "Extra" : "";
+       return (this.isExtra)? "Extra " : "";
     }
 
     @Override
     public String toString() {
-        return String.format("%s %s",toStringHelper(), this.description);
+        return String.format("%s%s",toStringHelper(), this.description);
     }
 }
 

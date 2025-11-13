@@ -164,9 +164,9 @@ public class UserInterface {
     }
 
     //Todo Figure out how you want to display the toppings and handle the meat and cheese
-    public void addToppingsToPizza(Pizza pizza){
+    public Pizza addToppingsToPizza(Pizza pizza){
         Boolean addingToppings = true;
-        Topping t = new Topping("");
+
 
         while (addingToppings) {
             //Loop toppings to add until user decides to stop
@@ -175,17 +175,17 @@ public class UserInterface {
                     
                     Choose your toppings, Enter 0 when finished);
                     
-                    Meats ($1:00)   1) Pepporoni    2)Sausase   3)Ham   4)Bacon    5)Chicken    6)Meatball
+                    Meats ($1:00)   1) Pepporoni    2)Sausase     3)Ham   4)Bacon    5)Chicken    6)Meatball
                     ────────────────────────────────────────────────────────────────────────────────────────
-                    Cheese (0.75)   7) Mozzarella    8)Parmesan    9)Ricotta    10)Goat Cheese   11)Buffalo
+                    Cheese (0.75)   7) Mozzarella   8)Parmesan    9)Ricotta    10)Goat Cheese   11)Buffalo
                     ────────────────────────────────────────────────────────────────────────────────────────
-                                    12)Onions   13)Mushrooms    14)bell peppers    15)olives    16)tomatoes
+                                    12)Onions       13)Mushrooms  14)bell peppers    15)olives    16)tomatoes
                     Regular (FREE)
                                     17)Spinach          18)Basil          19)Pineapple          20)Anchovies
+                    ────────────────────────────────────────────────────────────────────────────────────────
                     """);
             int toppingChoice = ConsoleHelper.promptForInt("Enter your command");
-
-            //ToDo make convertIntToTopping()
+            Topping t = new Topping("");
             switch (toppingChoice) {
                 case 1 -> t.setDescription("Pepperoni");
                 case 2 -> t.setDescription("Sausage");
@@ -211,22 +211,21 @@ public class UserInterface {
             }
 
             System.out.println();
-
-            t.setExtra(ConsoleHelper.promptForYesNo(String.format("Extra %s?", t.description)));
-            System.out.println();
-
-
+            if (addingToppings) {
+                t.setExtra(ConsoleHelper.promptForYesNo(String.format("Extra %s?", t.description)));
+                System.out.println();
+            }
             pizza.addTopping(t);
 
             //todo currently printing same topping repeatedly instead of each one individually?
             System.out.println("Current toppings:");
             pizza.getToppings().forEach(System.out::println);
 
-            for (Topping myTopping : pizza.getToppings()) {
-                System.out.println(myTopping);
-            }
+//            for (Topping myTopping : pizza.getToppings()) {
+//                System.out.println(myTopping);
+//            }
         }
-
+        return pizza;
 
     }
 

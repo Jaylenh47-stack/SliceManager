@@ -106,7 +106,7 @@ public class Pizza extends MenuItem{
 
     public String toStringHelper(){
         if (this.toppings.isEmpty()){
-            return "Without any toppings";
+            return "";
         }
         else{
         return "";
@@ -116,6 +116,24 @@ public class Pizza extends MenuItem{
     //todo fix toString so that it prints the pizza and the toppings it has
     @Override
     public String toString() {
-        return String.format("%s %s| $%.2f",crustType, description, getPrice());
+        //add "Stuffed to every stuffed crust pizza
+        String stuffed = "";
+        if (this.isStuffed){
+            stuffed = "Stuffed";
+        }
+
+
+        if (this.toppings.isEmpty()){
+        return String.format("%s %s %s| $%.2f",stuffed,crustType, description, getPrice());
+    }
+        else{
+        StringBuilder sB = new StringBuilder();
+            sB.append(String.format("%s %s %s with ",stuffed,crustType, description));
+            for(Topping t : toppings){
+                sB.append(t + ", " );
+            }
+            sB.append("| " + this.getPrice());
+            return sB.toString();
+        }
     }
 }

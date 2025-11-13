@@ -1,14 +1,21 @@
 package com.pluralsight;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 
 public class ReceiptManager {
 
     public static void saveReceipt(Order order){
+        File file = new File("Receipts/");
         try{
-//            FileWriter fileWriter = new FileWriter();
-//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            FileWriter fileWriter = new FileWriter(order.getReceiptFileName());
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+
+            bufferedWriter.write(order.getReceiptText());
+            bufferedWriter.close();
 
         }
         catch (Exception e) {
