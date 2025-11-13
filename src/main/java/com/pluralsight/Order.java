@@ -29,21 +29,19 @@ public class Order {
     }
 
     public void display() {
-        System.out.println("Current order:");
-
-        List<GarlicKnots> allGarlicKnots = new ArrayList<>();
         for (MenuItem m : menuItems) {
             System.out.println(m);
         }
-
-
-
-
         if (menuItems.size() > 1) {
             System.out.printf("Current total: %.2f%n", getOrderTotal());
         }
 
     }
+
+
+
+
+
 
     public double getOrderTotal(){
         double orderTotal = 0;

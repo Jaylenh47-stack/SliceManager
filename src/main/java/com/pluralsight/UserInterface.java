@@ -15,11 +15,11 @@ public class UserInterface {
             System.out.println("""
                 
                 Welcome to the SliceManager
-                ============================
+                ֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎
                 1) New Order
                 0) Exit""");
 
-            int homeScreenChoice = ConsoleHelper.promptForInt("");
+            int homeScreenChoice = ConsoleHelper.promptForInt("Enter your command");
 
             switch (homeScreenChoice) {
                 case 0:
@@ -34,16 +34,18 @@ public class UserInterface {
 
     public void displayOrderScreen(){
         Order order = new Order();
+        System.out.println("֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎");
 
         while (true) {
 
             int orderScreenChoice = ConsoleHelper.promptForInt("""
+                Order Menu
                 1) Add Pizza
                 2) Add Drink
                 3) Add Garlic Knots
                 4) Checkout
                 0) Cancel Order""");
-
+            System.out.println();
 
             switch(orderScreenChoice){
                 case 1:
@@ -57,16 +59,20 @@ public class UserInterface {
                     processAddGarlicKnotsRequest(order);
                     break;
                 case 4:
-                    System.out.println("Confirm your order");
-                    System.out.println("=====================");
-                    order.display();
-                   String confirmOrder = ConsoleHelper.promptForString("Checkout? (Yes/No)");
+                    //If this method returns true, checkout is successful, return to the homescreen
+                   if(processCheckoutRequest(order)){
+                       return;
+                   }
+
+                   //Checkout unsuccessful, go to the orderScreen
+                   else{
+                       break;
+                   }
+
+
 
                 case 0:
                     return;
-
-
-
             }
         }
     }
@@ -255,6 +261,32 @@ public class UserInterface {
 
         order.display();
         return order;
+    }
+
+    public boolean processCheckoutRequest(Order order){
+
+
+        if (order.getMenuItems().isEmpty()){
+            System.out.println("Cannot checkout without any items");
+            return false;
+        }
+
+        System.out.println("֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎");
+        System.out.println();
+        System.out.println("CONFIRM YOUR ORDER");
+        System.out.println();
+        order.display();
+        System.out.println();
+        String confirmOrder = ConsoleHelper.promptForString("Checkout? (Yes/No)");
+
+        if (confirmOrder.toLowerCase().contains("y")){
+            //write receipt to file
+        }
+        else{
+            return false;
+        }
+
+        return true;
     }
 
 
