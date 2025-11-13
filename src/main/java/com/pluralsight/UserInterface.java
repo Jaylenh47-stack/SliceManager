@@ -34,18 +34,19 @@ public class UserInterface {
 
     public void displayOrderScreen(){
         Order order = new Order();
-        System.out.println("֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎");
+        System.out.println("");
 
         while (true) {
 
-            int orderScreenChoice = ConsoleHelper.promptForInt("""
+            System.out.println("""
                 Order Menu
+                ֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎
                 1) Add Pizza
                 2) Add Drink
                 3) Add Garlic Knots
                 4) Checkout
                 0) Cancel Order""");
-            System.out.println();
+            int orderScreenChoice = ConsoleHelper.promptForInt("Enter your command");
 
             switch(orderScreenChoice){
                 case 1:
@@ -80,8 +81,17 @@ public class UserInterface {
 
 
     public String convertIntToCrustType(){
-        System.out.println("Select your crust");
-        int userInput = ConsoleHelper.promptForInt("1)Thin    2)Regular    3)Thick    4)Cauliflower");
+        System.out.println("""
+                
+                Select your crust);
+                ֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎
+                1)Thin
+                2)Regular
+                3)Thick
+                4)Cauliflower""");
+
+        int userInput = ConsoleHelper.promptForInt("Enter your command");
+
         String crustType = switch(userInput){
             case 1 -> "Thin";
             case 2 -> "Regular";
@@ -93,28 +103,47 @@ public class UserInterface {
     }
 
     public String convertIntToPizzaSize(){
-        System.out.println("Which size would you like");
-        int userInput = ConsoleHelper.promptForInt("1)Personal (8\")    2)Medium (12\")    3)Large (16\")");
+
+        System.out.println("""
+                
+                What size would you like
+                ֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎
+                1)Personal (8\")
+                2)Medium (12\")
+                3)Large (16\")
+                """);
+
+        int userInput = ConsoleHelper.promptForInt("Enter your command");
         String size = switch(userInput){
             case 1 -> "Personal (8\")";
             case 2 -> "Medium (12\")";
             case 3 -> "Large (16\")";
-            default -> "Invalid input, please enter a 1, 2, or 3 to choose your size";
+            default -> "Personal (8\")";
         };
         return size;
     }
 
     public String convertIntToSauce(){
-        System.out.println("Select your sauce");
-        int userInput = ConsoleHelper.promptForInt("1)Marinara   2)Alfredo    3)Pesto    4)BBQ    5)Buffalo    6)Olive oil");
+        System.out.println("""
+              
+                Select your sauce
+              ֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎֎
+              1)Marinara
+              2)Alfredo
+              3)Pesto
+              4)BBQ
+              5)Buffalo
+              6)Olive oil""");
+
+        int userInput = ConsoleHelper.promptForInt("Enter your command");
         String sauce = switch(userInput){
             case 1 -> "Marinara";
             case 2 -> "Alfredo";
             case 3 -> "Pesto";
-            case 4 -> "BBQr";
+            case 4 -> "BBQ";
             case 5 -> "Buffalo";
             case 6 -> "Olive oil";
-            default -> "Invalid input, please enter a 1, 2, 3, 4, 5, or 6 to choose your sauce";
+            default -> "Marinara";
         };
         return sauce;
     }
@@ -126,6 +155,7 @@ public class UserInterface {
         String crustType = convertIntToCrustType();
         String size = convertIntToPizzaSize();
         String sauce = convertIntToSauce();
+        System.out.println();
         String stuffedCrust = ConsoleHelper.promptForString("Would you like stuff crusted (Yes/No)");
         boolean isStuffed = (stuffedCrust.toLowerCase().contains("y"));
 
@@ -141,15 +171,19 @@ public class UserInterface {
         while (addingToppings){
             //Loop toppings to add until user decides to stop
             //Todo make toppings screen into a new method
-            System.out.println("Choose your toppings, Enter 0 when finished");
-            int toppingChoice = ConsoleHelper.promptForInt("""
+            System.out.println("""
+                    
+                    Choose your toppings, Enter 0 when finished);
+            
                     Meats ($1:00)   1) Pepporoni    2)Sausase   3)Ham   4)Bacon    5)Chicken    6)Meatball
-                    
-                    Cheese (0.75)   7) Mozzarella   8)Parmesan  9)Ricotta   10)Goat Cheese  11)Buffalo
-                    
-                    Regular (FREE)  12)Onions   13)Mushrooms    14)bell peppers    15)olives    16)tomatoes
-                                    17)Spinach    18)Basil    19)Pineapple    20)Anchovies
+                    ────────────────────────────────────────────────────────────────────────────────────────
+                    Cheese (0.75)   7) Mozzarella    8)Parmesan    9)Ricotta    10)Goat Cheese   11)Buffalo
+                    ────────────────────────────────────────────────────────────────────────────────────────
+                                    12)Onions   13)Mushrooms    14)bell peppers    15)olives    16)tomatoes
+                    Regular (FREE)
+                                    17)Spinach          18)Basil          19)Pineapple          20)Anchovies
                     """);
+            int toppingChoice = ConsoleHelper.promptForInt("Enter your command");
 
             //ToDo make convertIntToTopping()
             switch  (toppingChoice){
@@ -175,16 +209,32 @@ public class UserInterface {
                 case 20-> t.setDescription("Anchovies");
                 case 0-> addingToppings = false;
                 }
+            System.out.println();
+
+            t.setExtra(ConsoleHelper.promptForYesNo(String.format("Extra %s?", t.description)));
+            if (t.isExtra()){
+                System.out.println("Extra" + " " + t.description + " added");
+            }
+
             pizza.addTopping(t);
+
+            //todo currently printing same topping repeatedly instead of each one individually?
+            for(Topping myToppings: pizza.getToppings()) {
+                System.out.println(myToppings.getDescription() + " added");
             }
 
         }
+
+    }
 
 
     public Order processAddPizzaRequest(Order order){
         Pizza p = makePizzaWithoutToppings();
         addToppingsToPizza(p);
         order.addMenuItem(p);
+
+        System.out.println();
+        System.out.println("Current Order:");
         order.display();
 
         return order;
@@ -252,13 +302,14 @@ public class UserInterface {
         System.out.println("How many garlic knots would you like?");
         System.out.println("Sold in packs of 3 for $1.50");
 
-        int garlicKnotsQuantity = ConsoleHelper.promptForInt("");
+        int garlicKnotsQuantity = ConsoleHelper.promptForInt("Enter your command");
 
         for (int i = 0; i <garlicKnotsQuantity; i++) {
             GarlicKnots garlicKnots = new GarlicKnots();
             order.addMenuItem(garlicKnots);
         }
-
+        System.out.println();
+        System.out.println("Current order");
         order.display();
         return order;
     }

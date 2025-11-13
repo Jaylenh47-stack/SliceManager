@@ -33,7 +33,7 @@ public class Order {
             System.out.println(m);
         }
         if (menuItems.size() > 1) {
-            System.out.printf("Current total: %.2f%n", getOrderTotal());
+            System.out.printf("Current total: $%.2f%n", getOrderTotal());
         }
 
     }
