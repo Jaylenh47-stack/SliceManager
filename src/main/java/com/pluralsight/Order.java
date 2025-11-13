@@ -1,27 +1,50 @@
 package com.pluralsight;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
     private List<MenuItem> menuItems;
     private LocalDateTime localDateTime;
-
+    private String receiptFileName;
 
 
 
     public Order() {
         this.menuItems = new ArrayList<>();
         this.localDateTime = LocalDateTime.now();
+        this.receiptFileName = "Receipts/" + localDateTime.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"))+".txt";
     }
+
+    public String getReceiptFileName() {
+        return receiptFileName;
+    }
+
+
 
     public List<MenuItem> getMenuItems() {
         return menuItems;
     }
 
-    public LocalDateTime getLocalDateTime() {
+    public LocalDateTime getLocalDateTime(Order order) {
         return localDateTime;
+    }
+
+    public StringBuilder getReceiptText(){
+        StringBuilder receipt = new StringBuilder();
+
+        receipt.append("Pizzeria" +"\n");
+        receipt.append("──────────────────────────────────────" + "\n");
+        for (MenuItem m: menuItems){
+            receipt.append(m.toString()).append("\n");
+        }
+        receipt.append("──────────────────────────────────────");
+
+        return receipt;
+
+
     }
 
     public void addMenuItem(MenuItem menuItem){

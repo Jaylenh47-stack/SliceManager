@@ -156,8 +156,8 @@ public class UserInterface {
         String size = convertIntToPizzaSize();
         String sauce = convertIntToSauce();
         System.out.println();
-        String stuffedCrust = ConsoleHelper.promptForString("Would you like stuff crusted (Yes/No)");
-        boolean isStuffed = (stuffedCrust.toLowerCase().contains("y"));
+        boolean isStuffed = ConsoleHelper.promptForYesNo("Would you like stuff crusted");
+        //boolean isStuffed = (stuffedCrust.toLowerCase().contains("y"));
 
         Pizza pizza = new Pizza(size, crustType, sauce, isStuffed);
         return pizza;
@@ -168,13 +168,13 @@ public class UserInterface {
         Boolean addingToppings = true;
         Topping t = new Topping("");
 
-        while (addingToppings){
+        while (addingToppings) {
             //Loop toppings to add until user decides to stop
             //Todo make toppings screen into a new method
             System.out.println("""
                     
                     Choose your toppings, Enter 0 when finished);
-            
+                    
                     Meats ($1:00)   1) Pepporoni    2)Sausase   3)Ham   4)Bacon    5)Chicken    6)Meatball
                     ────────────────────────────────────────────────────────────────────────────────────────
                     Cheese (0.75)   7) Mozzarella    8)Parmesan    9)Ricotta    10)Goat Cheese   11)Buffalo
@@ -186,7 +186,7 @@ public class UserInterface {
             int toppingChoice = ConsoleHelper.promptForInt("Enter your command");
 
             //ToDo make convertIntToTopping()
-            switch  (toppingChoice){
+            switch (toppingChoice) {
                 case 1 -> t.setDescription("Pepperoni");
                 case 2 -> t.setDescription("Sausage");
                 case 3 -> t.setDescription("Ham");
@@ -197,7 +197,7 @@ public class UserInterface {
                 case 8 -> t.setDescription("Parmesan");
                 case 9 -> t.setDescription("Ricotta");
                 case 10 -> t.setDescription("Goat Cheese");
-                case 11-> t.setDescription("Buffalo");
+                case 11 -> t.setDescription("Buffalo");
                 case 12 -> t.setDescription("Onions");
                 case 13 -> t.setDescription("Mushrooms");
                 case 14 -> t.setDescription("Bell Peppers");
@@ -206,24 +206,27 @@ public class UserInterface {
                 case 17 -> t.setDescription("Spinach");
                 case 18 -> t.setDescription("Basil");
                 case 19 -> t.setDescription("Pineapple");
-                case 20-> t.setDescription("Anchovies");
-                case 0-> addingToppings = false;
-                }
+                case 20 -> t.setDescription("Anchovies");
+                case 0 -> addingToppings = false;
+            }
+
             System.out.println();
 
             t.setExtra(ConsoleHelper.promptForYesNo(String.format("Extra %s?", t.description)));
-            if (t.isExtra()){
-                System.out.println("Extra" + " " + t.description + " added");
-            }
+            System.out.println();
+
 
             pizza.addTopping(t);
 
             //todo currently printing same topping repeatedly instead of each one individually?
-            for(Topping myToppings: pizza.getToppings()) {
-                System.out.println(myToppings.getDescription() + " added");
-            }
+            System.out.println("Current toppings:");
+            pizza.getToppings().forEach(System.out::println);
 
+            for (Topping myTopping : pizza.getToppings()) {
+                System.out.println(myTopping);
+            }
         }
+
 
     }
 

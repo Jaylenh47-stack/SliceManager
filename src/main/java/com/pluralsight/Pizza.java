@@ -108,9 +108,18 @@ public class Pizza extends MenuItem{
         return basePricing() + isStuffedPricing() + toppingsPricing();
     }
 
+    public String toStringHelper(){
+        if (this.toppings.isEmpty()){
+            return "Without any toppings";
+        }
+        else{
+        return "";
+        }
+    }
+
     //todo fix toString so that it prints the pizza and the toppings it has
     @Override
     public String toString() {
-        return String.format("%s %s| %.2f",crustType, description, getPrice());
+        return String.format("%s %s| $%.2f",crustType, description, getPrice());
     }
 }

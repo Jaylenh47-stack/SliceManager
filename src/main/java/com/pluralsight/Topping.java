@@ -98,4 +98,14 @@ public class Topping extends MenuItem {
 
         return isExtraPricing() + isPremiumPricing();
     }
+
+    public String toStringHelper(){
+       return (this.isExtra)? "Extra" : "";
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s",toStringHelper(), this.description);
+    }
 }
+
