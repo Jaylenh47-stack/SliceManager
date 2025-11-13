@@ -170,7 +170,7 @@ public class UserInterface {
 
         while (addingToppings) {
             //Loop toppings to add until user decides to stop
-            //Todo make toppings screen into a new method
+            //Todo make toppings screen into a new method and update the price of meat and cheese based on the pizza.getSize()
             System.out.println("""
                     
                     Choose your toppings, Enter 0 when finished);

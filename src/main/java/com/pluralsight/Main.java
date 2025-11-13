@@ -1,9 +1,8 @@
 package com.pluralsight;
 
 public class Main {
-
-    //Constructor for topping class
-    //Pricing for isExtra
+    //todo put everything into packages
+    //addToppingsToPizza broke
     public static void main(String[] args) {
 
 
@@ -21,9 +20,9 @@ public class Main {
         order.addMenuItem(pizza);
         order.addMenuItem(drink);
         //Todo make display order look nice
-//        order.display();
+        order.display();
 
-        System.out.println(order.getReceiptText());
+//        System.out.println(order.getReceiptText());
 
 //        System.out.println(pizza.getPrice());
 

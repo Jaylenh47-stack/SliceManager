@@ -51,11 +51,7 @@ public class Pizza extends MenuItem{
           this.toppings.add(topping);
     }
 
-    public void removeTopping(Topping topping){
-        this.toppings.remove(topping);
-        //use this in userinterface
 
-    }
 
 
     public double basePricing(){

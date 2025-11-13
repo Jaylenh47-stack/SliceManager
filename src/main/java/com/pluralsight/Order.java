@@ -37,11 +37,13 @@ public class Order {
 
         receipt.append("Pizzeria" +"\n");
         receipt.append("──────────────────────────────────────" + "\n");
+        receipt.append("Date: " + this.localDateTime + "\n");
+        receipt.append("──────────────────────────────────────" + "\n");
         for (MenuItem m: menuItems){
             receipt.append(m.toString()).append("\n");
         }
-        receipt.append("──────────────────────────────────────");
-
+        receipt.append("──────────────────────────────────────" + "\n");
+        receipt.append(String.format("Total: %30.2f", getOrderTotal()));
         return receipt;
 
 
@@ -51,6 +53,7 @@ public class Order {
         this.menuItems.add(menuItem);
     }
 
+    //todo move this method into UI
     public void display() {
         for (MenuItem m : menuItems) {
             System.out.println(m);
@@ -60,10 +63,6 @@ public class Order {
         }
 
     }
-
-
-
-
 
 
     public double getOrderTotal(){
