@@ -1,7 +1,7 @@
-package com.pluralsight;
+package data;
 
 public abstract class MenuItem {
-    protected String description;
+    public String description;
 
 
     public MenuItem(String description) {

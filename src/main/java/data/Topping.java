@@ -1,4 +1,4 @@
-package com.pluralsight;
+package data;
 
 public class Topping extends MenuItem {
     private String category;

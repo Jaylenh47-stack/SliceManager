@@ -1,9 +1,9 @@
-package com.pluralsight;
+package data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pizza extends MenuItem{
+public class Pizza extends MenuItem {
     private String size;
     private String crustType;
     private String sauce;

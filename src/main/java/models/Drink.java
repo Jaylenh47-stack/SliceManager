@@ -1,4 +1,6 @@
-package com.pluralsight;
+package models;
+
+import data.MenuItem;
 
 public class Drink extends MenuItem {
     private String size;

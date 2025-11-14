@@ -1,6 +1,8 @@
-package com.pluralsight;
+package models;
 
-public class GarlicKnots extends MenuItem{
+import data.MenuItem;
+
+public class GarlicKnots extends MenuItem {
 
 
     public GarlicKnots() {
