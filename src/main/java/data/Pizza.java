@@ -80,7 +80,7 @@ public class Pizza extends MenuItem {
 
         int sizeInflation = 0;
 
-        //multiplier for the extra toppings option based on size
+        //multiplier for the extra toppings option based on pizza size
         if (this.getSize().equals("Personal (8\")")){
             sizeInflation = 1;
         }
@@ -106,7 +106,7 @@ public class Pizza extends MenuItem {
 
 
 
-    //todo fix toString so that it prints the pizza and the toppings it has
+
     @Override
     public String toString() {
         //add "Stuffed to every stuffed crust pizza
