@@ -32,7 +32,7 @@ public class UserInterface {
                 case 0:
                     return;
                 case 1:
-                    //display order screen
+
                    displayOrderScreen();
                    break;
             }
@@ -57,7 +57,7 @@ public class UserInterface {
 
             switch(orderScreenChoice){
                 case 1:
-                    //Make a pizza from user input and add it to the order
+
                     processAddPizzaRequest(order);
                     break;
                 case 2:
