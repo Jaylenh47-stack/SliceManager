@@ -1,4 +1,4 @@
-package data;
+package models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +80,7 @@ public class Pizza extends MenuItem {
 
         int sizeInflation = 0;
 
-        //multiplier for the extra toppings option based on pizza size
+        //multiplier for the toppings based on pizza size
         if (this.getSize().equals("Personal (8\")")){
             sizeInflation = 1;
         }

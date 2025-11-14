@@ -1,4 +1,4 @@
-package data;
+package models;
 
 public abstract class MenuItem {
     public String description;

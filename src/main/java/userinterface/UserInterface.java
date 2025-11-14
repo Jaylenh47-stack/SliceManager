@@ -1,9 +1,9 @@
 package userinterface;
 
-import data.Order;
-import data.Pizza;
+import models.Order;
+import models.Pizza;
 import data.ReceiptManager;
-import data.Topping;
+import models.Topping;
 import models.Drink;
 import models.GarlicKnots;
 
@@ -176,10 +176,9 @@ public class UserInterface {
     public Pizza addToppingsToPizza(Pizza pizza){
         Boolean addingToppings = true;
 
-
         while (addingToppings) {
             //Loop toppings to add until user decides to stop
-            //Todo make toppings screen into a new method and update the price of meat and cheese based on the pizza.getSize()
+
             System.out.println("""
                     
                     Choose your toppings);
@@ -236,9 +235,7 @@ public class UserInterface {
             System.out.println("Current toppings:");
             pizza.getToppings().forEach(System.out::println);
 
-//            for (Topping myTopping : pizza.getToppings()) {
-//                System.out.println(myTopping);
-//            }
+
         }
         return pizza;
 
@@ -270,6 +267,7 @@ public class UserInterface {
 
     public String convertIntToDrinkDescrption(){
         //Method is called after the menu is displayed
+        System.out.println();
         int userChoice = ConsoleHelper.promptForInt("Enter your command");
         String description = switch(userChoice){
             case 1 -> "Water";
@@ -287,6 +285,7 @@ public class UserInterface {
 
     public String convertIntToDrinkSize(){
         //Method is called after the drink size is asked for
+        System.out.println();
         int userChoice = ConsoleHelper.promptForInt("Enter your command");
         String size = switch(userChoice){
             case 1 -> "Small";

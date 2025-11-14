@@ -1,7 +1,5 @@
 package models;
 
-import data.MenuItem;
-
 public class GarlicKnots extends MenuItem {
 
 
