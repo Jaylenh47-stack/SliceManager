@@ -37,7 +37,7 @@ public class Order {
 
         receipt.append("                            Pizzeria" +"\n");
         receipt.append("────────────────────────────────────────────────────────────────────────" + "\n");
-        receipt.append("Date: " + this.localDateTime + "\n");
+        receipt.append("Date: " + this.localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n");
         receipt.append("────────────────────────────────────────────────────────────────────────" + "\n");
         for (MenuItem m: menuItems){
             receipt.append(m.toString()).append("\n");
@@ -58,9 +58,9 @@ public class Order {
         for (MenuItem m : menuItems) {
             System.out.println(m);
         }
-        if (menuItems.size() > 1) {
+
             System.out.printf("Current total: $%.2f%n", getOrderTotal());
-        }
+
 
     }
 

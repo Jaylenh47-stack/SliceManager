@@ -122,6 +122,7 @@ public class Pizza extends MenuItem{
         else{
         StringBuilder sB = new StringBuilder();
             sB.append(String.format("%s %s %s with ",stuffed,crustType, description));
+
             for(int i = 0; i < toppings.size(); i++){
                 Topping t = toppings.get(i);
 
