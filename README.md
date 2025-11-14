@@ -1,6 +1,10 @@
 # Who and Why
 My name is Jaylen Hayden, a Year Up United student who was tasked with creating a point of sales application for a pizzeria for my capstone project. This application demonstrates my understanding of the course learnings so far, especially object oriented programming principles.
 
+# Structure of code
+
+![image alt](https://github.com/Jaylenh47-stack/SliceManager/blob/69b81abc136f75feed36b057d8a9c918843b5280/UMLDiagrams.PNG)
+
 # What it does
 The slice manager handles all of the procedures necessary for a pizzeria to get a customer to checkout.
 The application starts by displaying the home screen
