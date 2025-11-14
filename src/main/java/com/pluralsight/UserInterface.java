@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import data.ReceiptManager;
+
 public class UserInterface {
 
 
