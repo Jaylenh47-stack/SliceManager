@@ -172,7 +172,7 @@ public class UserInterface {
         return pizza;
     }
 
-    //Todo Figure out how you want to display the toppings and handle the meat and cheese
+
     public Pizza addToppingsToPizza(Pizza pizza){
         Boolean addingToppings = true;
 
